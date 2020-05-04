@@ -11,7 +11,7 @@
   &nbsp;
 </div>
 <div *ngFor="let ptrn of detectedPatterns">
-    <p>{{ptrn.constructor.name}}</p>
+    <p>{{ptrn.friendlyName()}}</p>
 </div>
 <numpad></numpad>
 <router-outlet></router-outlet>

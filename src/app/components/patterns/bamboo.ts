@@ -38,4 +38,8 @@ export class Bamboo implements PatternSearch{
     reason():Array<Cell>{
         return this.markedCells
     }
+
+    friendlyName():string{
+      return "Bamboo"   
+    }
 }

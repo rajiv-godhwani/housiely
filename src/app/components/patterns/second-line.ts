@@ -14,7 +14,7 @@ export class SecondLine implements PatternSearch{
             let secondLineCells = ticket.cells.slice(9,18).filter(c=> !c.isEmpty)
             this.secondLineCellsMap.set(ticket,secondLineCells)
 
-            console.log("Pattern => ",secondLineCells.join(','))
+            console.log("Pattern => ",secondLineCells.map(c=> c.value).join(','))
         })
     }
     
@@ -30,6 +30,10 @@ export class SecondLine implements PatternSearch{
 
     reason(): Cell[] {
         return this.markedCells
+    }
+
+    friendlyName():string{
+        return "2nd Line"   
     }
 
 }

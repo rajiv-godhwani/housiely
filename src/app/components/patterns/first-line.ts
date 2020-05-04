@@ -14,7 +14,7 @@ export class FirstLine implements PatternSearch{
             let firstLineCells = ticket.cells.slice(0,9).filter(c=> !c.isEmpty)
             this.firstLineCellsMap.set(ticket,firstLineCells)
 
-            console.log("Pattern => ",firstLineCells.join(','))
+            console.log("Pattern => ",firstLineCells.map(c=> c.value).join(','))
         })
     }
     
@@ -30,6 +30,10 @@ export class FirstLine implements PatternSearch{
 
     reason(): Cell[] {
         return this.markedCells
+    }
+
+    friendlyName():string{
+      return "1st Line"   
     }
 
 }

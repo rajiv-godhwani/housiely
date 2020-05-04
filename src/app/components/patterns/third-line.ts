@@ -14,7 +14,7 @@ export class ThirdLine implements PatternSearch{
             let thirdLineCells = ticket.cells.slice(18,27).filter(c=> !c.isEmpty)
             this.thirdLineCellsMap.set(ticket,thirdLineCells)
 
-            console.log("Pattern => ",thirdLineCells.join(','))
+            console.log("Pattern => ",thirdLineCells.map(c=> c.value).join(','))
         })
     }
     
@@ -31,5 +31,9 @@ export class ThirdLine implements PatternSearch{
     reason(): Cell[] {
         return this.markedCells
     }
+
+    friendlyName():string{
+        return "3rd Line"   
+      }
 
 }

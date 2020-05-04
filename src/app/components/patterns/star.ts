@@ -41,4 +41,8 @@ export class Star implements PatternSearch{
     reason():Array<Cell>{
         return this.markedCells
     }
+
+    friendlyName():string{
+        return "Star"   
+    }
 }

@@ -13,4 +13,6 @@ export interface PatternSearch{
     
     reason():Array<Cell>;
 
+    friendlyName():string;
+
 }

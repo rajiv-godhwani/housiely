@@ -26,4 +26,8 @@ export class QuickSeven implements PatternSearch{
         return this.markedCells
     }
 
+    friendlyName():string{
+        return "Quick 7"   
+    }
+
 }

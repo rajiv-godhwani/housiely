@@ -27,4 +27,8 @@ export class FullHouse implements PatternSearch{
     reason():Array<Cell>{
         return this.markedCells
     }
+
+    friendlyName():string{
+        return "Full House"   
+      }
 }

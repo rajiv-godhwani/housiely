@@ -31,7 +31,11 @@ export class PatternDetector{
             }
             // If isDirty run patterns
             if(isDirty){
-                for(let pattern of this.patterns.filter(p=> !this.isPatternDetected(ticket,p))){
+                var avlblPatterns = this.patterns.filter(p=> !this.isPatternDetected(ticket,p))
+
+                console.log(avlblPatterns.map(p=> p.constructor.name).join(','))
+
+                for(let pattern of avlblPatterns){
                     let result = pattern.onUpdate(ticket,number)
                     if(result){
                         this.setDetected(ticket,pattern)
@@ -45,11 +49,8 @@ export class PatternDetector{
 
     setDetected(ticket:Ticket, pattern: PatternSearch){
         if(this.detectedPatterns.has(ticket)){
-            let patterns : Array<PatternSearch> = this.detectedPatterns.get(this.detectedPatterns)
-            if(patterns == null){
-                patterns = []
-            }
-                patterns.push(pattern)
+            let patterns : Array<PatternSearch> = this.detectedPatterns.get(ticket)
+            patterns.push(pattern)
         }else{
             this.detectedPatterns.set(ticket,[pattern])
         }
