@@ -1,17 +1,26 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+<div id="wrapper">
+  <div id="header" style="text-align:center">
+    <h4>
+      {{ title }}
+    </h4>
+    <div id="announceNumber">{{announceNumber}}</div>
+    <button (click)="onModeButtonClick()">{{mode}}</button>
+
+    <button (click)="onTicketAdd()">Add Ticket</button>
+  </div>
+
+  <div id="inner-wrap" >
+    <div id="content">
+      <ticket [cells]="tkt" *ngFor = "let tkt of tickets"></ticket>
+    </div>
+  </div>
+
+  <!-- <div *ngFor="let ptrn of detectedPatterns">
+      <p>{{ptrn.friendlyName()}}</p>
+  </div> -->
+  <div id="footer">
+    <numpad></numpad>
+  </div>
 </div>
-<button (click)="onModeButtonClick()">{{mode}}</button>
-<button (click)="onTicketAdd()">Add Ticket</button>
-<div *ngFor = "let tkt of tickets">
-  <ticket [cells]="tkt"></ticket>
-  &nbsp;
-</div>
-<div *ngFor="let ptrn of detectedPatterns">
-    <p>{{ptrn.friendlyName()}}</p>
-</div>
-<numpad></numpad>
 <router-outlet></router-outlet>

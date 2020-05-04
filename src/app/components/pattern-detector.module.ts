@@ -33,14 +33,12 @@ export class PatternDetector{
             if(isDirty){
                 var avlblPatterns = this.patterns.filter(p=> !this.isPatternDetected(ticket,p))
 
-                console.log(avlblPatterns.map(p=> p.constructor.name).join(','))
-
                 for(let pattern of avlblPatterns){
                     let result = pattern.onUpdate(ticket,number)
                     if(result){
                         this.setDetected(ticket,pattern)
                         this.patternAnnouncer.emitPattern(pattern)
-                        console.log('Detected : ' + pattern.constructor.name+' => '+this.printCells(pattern.reason()))
+                        console.log('Detected : ' + pattern.constructor.name)
                     }
                 }
             }
@@ -78,14 +76,6 @@ export class PatternDetector{
             return false
         }
         return false;
-    }
-
-    printCells(cells:Array<Cell>):string{
-        let printString = '['
-        cells.forEach(cell=>printString+=cell.value+',')
-        printString= printString.slice(0,-1)
-        printString+=']'
-        return printString
     }
 
 }

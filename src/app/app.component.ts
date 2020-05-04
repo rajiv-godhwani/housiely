@@ -13,6 +13,7 @@ import { ThirdLine } from './components/patterns/third-line';
 import { FullHouse } from './components/patterns/full-house';
 import { Subscription } from 'rxjs';
 import { PatternAnnouncerService } from './services/pattern-announcer';
+import Speech from 'speak-tts'
 
 @Component({
   selector: 'app-root',
@@ -39,8 +40,12 @@ export class AppComponent {
 
   patternSubscription 
 
-  constructor(private numpadSvc: NumpadService,private patternAncr : PatternAnnouncerService){
+  speech = new Speech()
 
+  constructor(private numpadSvc: NumpadService,private patternAncr : PatternAnnouncerService){
+    if(this.speech.hasBrowserSupport()){
+      this.speech.init()
+    }
   }
 
   onModeButtonClick(){
@@ -59,12 +64,9 @@ export class AppComponent {
   }
 
   onTicketAdd(){
-    // this.tickets.push([undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,
-    //                   undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,
-    //                   undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined])
-    this.tickets.push([0,11,0,32,0,53,0,77,83,
-                      8,0,20,0,46,56,0,0,89,
-                      0,17,0,34,0,58,68,0,90])
+    this.tickets.push([undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,
+                      undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,
+                      undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined])
   }
 
   onPlayDisabled(){
@@ -92,17 +94,22 @@ export class AppComponent {
     this.numpadSubscription = this.numpadSvc.getNumber().subscribe(n=>this.onNumberAnnounce(n))
     this.patternSubscription = this.patternAncr.announcer().subscribe(p=> {
       this.detectedPatterns.push(p)
+      this.speech.speak({text : p.friendlyName()})
     })
 
   }
 
-  onNumberAnnounce(number){
-    
-    if(number == -2 && Number(this.announceNumber) != NaN && Number(this.announceNumber) > 0){
+  onNumberAnnounce(number){    
+    if(number == -2 && Number(this.announceNumber) > 0){
       this.checkPattern(+this.announceNumber)
       this.announceNumber = ''
     }else{
       this.announceNumber += number.toString()
+    }
+
+    var result = Number(this.announceNumber)
+    if(!(result > 0 && result<90)){
+      this.announceNumber = ''
     }
     
   }

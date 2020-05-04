@@ -4,8 +4,6 @@ button{
     height: 4em;
 }
 
-table{
+ table{
     width: 100%;
-    position: fixed;
-    bottom: 0;
-}
+} 
