@@ -1,0 +1,13 @@
+<div  class="ticketsWrapper">
+    <table class="ticket">
+        <tr>
+            <td (click)="onCellSelect(i)" [ngClass]="getClass(cell,i)" *ngFor="let cell of cells|slice:0:9; let i = index">{{cell== 0?'':cell}}</td>
+        </tr>
+        <tr>
+            <td (click)="onCellSelect(i+9)" [ngClass]="getClass(cell,i+9)" *ngFor="let cell of cells|slice:9:18; let i = index">{{cell== 0?'':cell}}</td>
+        </tr>
+        <tr>
+            <td (click)="onCellSelect(i+18)" [ngClass]="getClass(cell,i+18)" *ngFor="let cell of cells|slice:18:27; let i = index">{{cell == 0?'':cell}}</td>
+        </tr>
+    </table>
+</div>

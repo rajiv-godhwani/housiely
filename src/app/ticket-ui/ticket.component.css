@@ -1,0 +1,27 @@
+body{
+    font-size: medium;
+    font-weight: bold;
+}
+.empty{
+    background-color: gray;
+}
+
+td{
+    padding: 1.2em;
+    text-align: center;
+    font-size: small;
+}
+
+td.selected{
+    background-color:cyan;
+}
+
+td.marked{
+    background-color: yellow;
+    text-decoration: line-through;
+}
+
+table,td{
+    border: 0.3ex solid black;
+    border-collapse: collapse;
+}
