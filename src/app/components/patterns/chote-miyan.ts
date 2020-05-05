@@ -12,7 +12,7 @@ export class ChoteMiyan implements PatternSearch{
 
     init(tickets: Array<Ticket>){
         tickets.forEach(ticket=>{
-            var filteredCell = ticket.cells.filter(c=> c.value > 45)
+            var filteredCell = ticket.cells.filter(c=> c.value <= 45 && c.value > 0)
             this.patternCellMap.set(ticket,filteredCell)
 
             console.log("Pattern => "+filteredCell.map(c=> c.value).join(','))
