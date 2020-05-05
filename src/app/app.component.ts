@@ -52,13 +52,13 @@ export class AppComponent {
 
   onModeButtonClick(){
     console.log('Mode changed')
-    if(this.mode == 'Input'){
+    if(this.mode == 'Edit'){
       this.mode = 'Play'
       this.ticketComp.forEach(tkt => tkt.onInputModeChange(true))
       
       
     }else{
-      this.mode = 'Input'
+      this.mode = 'Edit'
       this.ticketComp.forEach(tkt => tkt.onInputModeChange(false))
       this.onPlay()
       

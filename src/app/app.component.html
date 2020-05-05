@@ -5,9 +5,9 @@
       {{ title }}
     </h4>
     <div id="announceNumber">{{announceNumber}}</div>
-    <button (click)="onModeButtonClick()">{{mode}}</button>
-
-    <button (click)="onTicketAdd()">Add Ticket</button>
+    <button mat-flat-button color="accent" (click)="onModeButtonClick()">{{mode}}</button>
+    &nbsp;
+    <button mat-flat-button color="accent" (click)="onTicketAdd()" *ngIf="mode == 'Play'">Add Ticket</button>
   </div>
 
   <div id="inner-wrap" >

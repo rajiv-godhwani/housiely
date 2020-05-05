@@ -9,6 +9,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NumpadService } from './services/numpad-service';
 import { PatternAnnouncerService } from './services/pattern-announcer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { PatternAnnouncerService } from './services/pattern-announcer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [NumpadService,PatternAnnouncerService],
   bootstrap: [AppComponent,TicketComponent,NumpadComponent]
