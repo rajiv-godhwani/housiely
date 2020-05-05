@@ -21,7 +21,7 @@ export class Bamboo implements PatternSearch{
             bambooCells.push(thirdLine[2])
             this.bambooCellsMap.set(ticket,bambooCells)
 
-            console.log("Pattern => ",bambooCells[0].value,bambooCells[1].value,bambooCells[2].value)
+            console.log("Pattern => "+bambooCells.map(c=> c.value).join(','))
         })
     }
 

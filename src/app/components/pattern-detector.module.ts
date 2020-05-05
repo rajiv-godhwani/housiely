@@ -34,6 +34,7 @@ export class PatternDetector{
                 var avlblPatterns = this.patterns.filter(p=> !this.isPatternDetected(ticket,p))
 
                 for(let pattern of avlblPatterns){
+                    console.log('Check pattern '+pattern.friendlyName())
                     let result = pattern.onUpdate(ticket,number)
                     if(result){
                         this.setDetected(ticket,pattern)

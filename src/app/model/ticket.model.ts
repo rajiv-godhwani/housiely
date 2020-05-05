@@ -8,9 +8,11 @@ export class Ticket{
 
         cells.forEach(num=>{
             let cell = new Cell()
-            cell.value = num == undefined ? 0: num
-            cell.isEmpty = num === 0 || num == undefined
+            cell.value = num == undefined || isNaN(parseInt(num.toString())) ? 0: Number(num)
+            cell.isEmpty = cell.value == 0
             this.cells.push(cell)
         })
+
+        console.log("Created ticket with "+this.cells.map(c=> c.value).join(','))
     }
 }

@@ -80,7 +80,6 @@ export class AppComponent {
   onPlay(){
     let allTickets = new Array<Ticket>()
     this.ticketComp.forEach(tkt=> {
-      console.log(tkt.cells.join(','))
       allTickets.push(new Ticket(tkt.cells))
     })
 
@@ -95,6 +94,8 @@ export class AppComponent {
     this.patternSubscription = this.patternAncr.announcer().subscribe(p=> {
       this.detectedPatterns.push(p)
       this.speech.speak({text : p.friendlyName()})
+      this.shoot()
+      this.shoot()
     })
 
   }
@@ -108,7 +109,7 @@ export class AppComponent {
     }
 
     var result = Number(this.announceNumber)
-    if(!(result > 0 && result<90)){
+    if(!(result > 0 && result<=90)){
       this.announceNumber = ''
     }
     
@@ -118,6 +119,30 @@ export class AppComponent {
     console.log("Announced number "+number)
     this.patternDetector.onNumberAnnounce(number)
     this.ticketComp.forEach(tkt=> tkt.onNumberAnnounce(number))
+  }
+
+  shoot() {
+    try {
+      this.confetti({
+        angle: this.random(60, 120),
+        spread: this.random(10, 50),
+        particleCount: this.random(40, 100),
+        origin: {
+            y: 0.6
+        }
+      });
+    } catch(e) {
+      // noop, confettijs may not be loaded yet
+      console.error(e)
+    }
+  }
+
+  random(min: number, max: number) {
+    return Math.random() * (max - min) + min;
+  }
+
+  confetti(args: any) {
+    return window['confetti'].apply(this, arguments);
   }
 
 }

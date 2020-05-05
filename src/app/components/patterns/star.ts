@@ -23,8 +23,7 @@ export class Star implements PatternSearch{
             starCells.push(thirdLine[thirdLine.length-1])
             this.starCells.set(ticket,starCells)
 
-            console.log("Pattern => ",starCells[0].value,starCells[1].value,starCells[2].value,
-            starCells[3].value,starCells[4].value)
+            console.log("Pattern => "+starCells.map(c=> c.value).join(','))
         })
     }
 

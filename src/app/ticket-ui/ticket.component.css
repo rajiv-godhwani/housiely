@@ -7,7 +7,8 @@ body{
 }
 
 td{
-    padding: 1.2em;
+    width: 3em;
+    height: 3em;
     text-align: center;
     font-size: small;
 }
@@ -17,8 +18,10 @@ td.selected{
 }
 
 td.marked{
-    background-color: yellow;
-    text-decoration: line-through;
+    background-color: #ffeb3bed;
+    background-size: 3em;
+    background-image: url('../../assets/icons/marker.png');
+    background-repeat: no-repeat;
 }
 
 table,td{
