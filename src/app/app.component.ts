@@ -14,6 +14,8 @@ import { FullHouse } from './components/patterns/full-house';
 import { Subscription } from 'rxjs';
 import { PatternAnnouncerService } from './services/pattern-announcer';
 import Speech from 'speak-tts'
+import { BadeMiyan } from './components/patterns/bade-miyan';
+import { ChoteMiyan } from './components/patterns/chote-miyan';
 
 @Component({
   selector: 'app-root',
@@ -85,6 +87,7 @@ export class AppComponent {
 
     let patterns = [
       new QuickSeven() ,new Star(),new Bamboo(),
+      new BadeMiyan(), new ChoteMiyan(),
       new FirstLine(),new SecondLine(),new ThirdLine(),
       new FullHouse()
     ]

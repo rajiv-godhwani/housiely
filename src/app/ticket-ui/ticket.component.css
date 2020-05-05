@@ -3,7 +3,7 @@ body{
     font-weight: bold;
 }
 .empty{
-    background-color: gray;
+    
 }
 
 td{
@@ -14,7 +14,7 @@ td{
 }
 
 td.selected{
-    background-color:cyan;
+    background-color:#00bcd4;
 }
 
 td.marked{
@@ -25,7 +25,7 @@ td.marked{
 }
 
 table,td{
-    border: 0.3ex solid black;
+    border: 2px solid #00000066;
     border-collapse: collapse;
 }
 
