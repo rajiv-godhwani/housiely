@@ -4,7 +4,7 @@ import { NumpadService } from '../services/numpad-service';
 @Component({
     selector : "numpad",
     templateUrl : "./numpad.component.html",
-    styleUrls:['./numpad.component.css']
+    styleUrls:['./numpad.component.scss']
 })
 export class NumpadComponent{
 

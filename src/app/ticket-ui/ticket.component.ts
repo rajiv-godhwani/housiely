@@ -6,7 +6,7 @@ import { NumpadService } from '../services/numpad-service';
 @Component({
   selector: 'ticket',
   templateUrl: './ticket.component.html',
-  styleUrls: ['./ticket.component.css']
+  styleUrls: ['./ticket.component.scss']
 })
 
 export class TicketComponent {
@@ -43,11 +43,19 @@ export class TicketComponent {
 
   onCellSelect(cellIndex:number){
       if(!this.inputMode){
-          return
+          if(this.cells[cellIndex]!=0){
+              if(this.markedCell.indexOf(this.cells[cellIndex]) > -1){
+                this.markedCell.splice(this.markedCell.indexOf(this.cells[cellIndex]),1)
+              }else{
+                this.markedCell.push(this.cells[cellIndex])
+              }
+          }
       }
-      this.selectedCell = cellIndex
-      if(this.cells[this.selectedCell] == undefined){
-        this.cells[this.selectedCell] = ''
+      else{
+        this.selectedCell = cellIndex
+        if(this.cells[this.selectedCell] == undefined){
+            this.cells[this.selectedCell] = ''
+        }
       }
   }
 

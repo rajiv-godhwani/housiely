@@ -11,21 +11,22 @@ td{
     height: 3em;
     text-align: center;
     font-size: small;
+    font-weight: bold;
 }
 
 td.selected{
-    background-color:#00bcd4;
+    background-color:#29b6f6;
 }
 
 td.marked{
-    background-color: #ffeb3bed;
+    background-color: #ffd740;
     background-size: 3em;
     background-image: url('../../assets/icons/marker.png');
     background-repeat: no-repeat;
 }
 
 table,td{
-    border: 2px solid #00000066;
+    border: 1px solid #dedddd;
     border-collapse: collapse;
 }
 

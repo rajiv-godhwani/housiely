@@ -16,11 +16,14 @@ import { PatternAnnouncerService } from './services/pattern-announcer';
 import Speech from 'speak-tts'
 import { BadeMiyan } from './components/patterns/bade-miyan';
 import { ChoteMiyan } from './components/patterns/chote-miyan';
+import {TicketGenerator} from './services/ticket-generator-service';
+import { MatDialog } from '@angular/material/dialog';
+import { TicketCountDialog } from './ticket-count-dialog/ticket-count-dialog';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']  
+  styleUrls: ['./app.component.scss']  
 })
 export class AppComponent {
 
@@ -44,18 +47,18 @@ export class AppComponent {
 
   speech = new Speech()
 
-  constructor(private numpadSvc: NumpadService,private patternAncr : PatternAnnouncerService){
+  constructor(private numpadSvc: NumpadService,private patternAncr : PatternAnnouncerService,
+    private ticketGen : TicketGenerator, private dialog : MatDialog ){
     if(this.speech.hasBrowserSupport()){
       this.speech.init()
     }
   }
 
-  onModeButtonClick(){
-    console.log('Mode changed')
-    if(this.mode == 'Edit'){
+onModeButtonClick(){
+if(this.mode == 'Edit'){
       this.mode = 'Play'
       this.ticketComp.forEach(tkt => tkt.onInputModeChange(true))
-      
+      this.onPlayDisabled()
       
     }else{
       this.mode = 'Edit'
@@ -66,16 +69,30 @@ export class AppComponent {
   }
 
   onTicketAdd(){
-    this.tickets.push([undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,
-                      undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,
-                      undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined])
+    // this.tickets.push([undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,
+    //                   undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,
+    //                   undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined])
+                      // this.tickets.push([1,0,22,0,45,0,0,72,86,0,0,24,32,0,56,0,75,88,4,11,0,0,47,0,65,78,0])
+    // this.ticketGen.generate(4).subscribe(tickets=> this.tickets = tickets);
+    this.dialog.open(TicketCountDialog,{
+      data : {count : 1 }
+    }).afterClosed().subscribe( count=>
+      {
+        this.ticketGen.generate(count).subscribe(tickets=> this.tickets = tickets);
+      }
+    )
+
   }
 
   onPlayDisabled(){
     if(this.numpadSubscription){
       this.numpadSubscription.unsubscribe()
     }
+    if(this.patternSubscription){
+      this.patternSubscription.unsubscribe()
+    }
     this.patternDetector = undefined
+    this.announceNumber = ''
 
   }
 
@@ -118,9 +135,8 @@ export class AppComponent {
     
   }
 
-  checkPattern(number){
-    console.log("Announced number "+number)
-    this.patternDetector.onNumberAnnounce(number)
+checkPattern(number){
+this.patternDetector.onNumberAnnounce(number)
     this.ticketComp.forEach(tkt=> tkt.onNumberAnnounce(number))
   }
 
@@ -135,8 +151,7 @@ export class AppComponent {
         }
       });
     } catch(e) {
-      // noop, confettijs may not be loaded yet
-      console.error(e)
+// noop, confettijs may not be loaded yet
     }
   }
 
