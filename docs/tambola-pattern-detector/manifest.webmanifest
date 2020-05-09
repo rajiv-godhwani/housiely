@@ -1,11 +1,12 @@
 {
-  "name": "tambola-pattern-detector",
-  "short_name": "tambola-pattern-detector",
-  "theme_color": "#1976d2",
+  "name": "housiely",
+  "short_name": "housiely",
+  "theme_color": "#1b7993",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
+    "orientation": "portrait",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",

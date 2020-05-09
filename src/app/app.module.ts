@@ -20,6 +20,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TicketCountDialog } from './ticket-count-dialog/ticket-count-dialog';
 import {MatChipsModule} from '@angular/material/chips';
 import { PatternBoard } from './components/pattern-board/pattern-board.component';
+import { PrizeDialog } from './components/prize-dialog/prize-dialog.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { PatternBoard } from './components/pattern-board/pattern-board.component
     TicketComponent,
     NumpadComponent,
     TicketCountDialog,
-    PatternBoard
+    PatternBoard,
+    PrizeDialog
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,6 @@ import { PatternBoard } from './components/pattern-board/pattern-board.component
   ],
   providers: [NumpadService,PatternAnnouncerService ,HttpClient,TicketGenerator],
   bootstrap: [AppComponent],
-  entryComponents : [TicketCountDialog]
+  entryComponents : [TicketCountDialog,PrizeDialog]
 })
 export class AppModule { }

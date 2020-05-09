@@ -1,6 +1,6 @@
 import { Ticket } from "../model/ticket.model";
 import { Cell } from '../model/cell.model';
-import { PatternDetector } from './pattern-detector.module';
+import { PatternDetector } from './pattern-detector.component';
 import { QuickSeven } from './patterns/quick-seven';
 import { PatternSearch } from './pattern-contract';
 import { Star } from './patterns/star';

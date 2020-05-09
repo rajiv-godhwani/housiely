@@ -1,7 +1,7 @@
 import { Component, ViewChild, QueryList, ViewChildren, ComponentFactoryResolver, ReflectiveInjector, ViewContainerRef } from '@angular/core';
 import { NumpadService } from './services/numpad-service';
 import { TicketComponent } from './ticket-ui/ticket.component';
-import { PatternDetector } from './components/pattern-detector.module';
+import { PatternDetector } from './components/pattern-detector.component';
 import { PatternSearch } from './components/pattern-contract';
 import { Ticket } from './model/ticket.model';
 import { QuickSeven } from './components/patterns/quick-seven';
@@ -13,12 +13,12 @@ import { ThirdLine } from './components/patterns/third-line';
 import { FullHouse } from './components/patterns/full-house';
 import { Subscription } from 'rxjs';
 import { PatternAnnouncerService } from './services/pattern-announcer';
-import Speech from 'speak-tts'
 import { BadeMiyan } from './components/patterns/bade-miyan';
 import { ChoteMiyan } from './components/patterns/chote-miyan';
 import { TicketGenerator } from './services/ticket-generator-service';
 import { MatDialog } from '@angular/material/dialog';
 import { TicketCountDialog } from './ticket-count-dialog/ticket-count-dialog';
+import { PrizeDialog } from './components/prize-dialog/prize-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -43,16 +43,9 @@ export class AppComponent {
   patternSubscription
   numberSubscription
 
-  speech = new Speech()
-
 
   constructor(private numpadSvc: NumpadService, private patternAncr: PatternAnnouncerService,
-    private dialog: MatDialog, private ticketGenSvc: TicketGenerator) {
-    if (this.speech.hasBrowserSupport()) {
-      this.speech.init()
-    }
-
-  }
+    private dialog: MatDialog, private ticketGenSvc: TicketGenerator) {}
 
   ngAfterViewInit() {
     this.ticketComp.changes.subscribe(() => setTimeout(() => this.onPlay()))
@@ -89,36 +82,13 @@ export class AppComponent {
 
     this.patternDetector = new PatternDetector(this.patterns, allTickets, this.patternAncr)
     this.patternSubscription = this.patternAncr.announcer().subscribe(p => {
-      this.speech.speak({ text: p.friendlyName() })
-      this.shoot()
-      this.shoot()
+      this.dialog.open(PrizeDialog,{data :p})
     })
 
     this.numberSubscription = this.numpadSvc.getNumber().subscribe(num => this.patternDetector.onNumberAnnounce(num))
   }
 
 
-  shoot() {
-    try {
-      this.confetti({
-        angle: this.random(60, 120),
-        spread: this.random(10, 50),
-        particleCount: this.random(40, 100),
-        origin: {
-          y: 0.6
-        }
-      });
-    } catch (e) {
-      // noop, confettijs may not be loaded yet
-    }
-  }
-
-  random(min: number, max: number) {
-    return Math.random() * (max - min) + min;
-  }
-
-  confetti(args: any) {
-    return window['confetti'].apply(this, arguments);
-  }
+  
 
 }

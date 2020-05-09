@@ -20,7 +20,7 @@ export class FullHouse implements PatternSearch{
             }
         })
 
-        this.markedCells = ticket.cells
+        this.markedCells = ticket.cells.filter(c=> c.isMarked)
         return markCount == 15;
     }
     
