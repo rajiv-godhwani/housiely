@@ -1,7 +1,7 @@
 {
   "name": "housiely",
   "short_name": "housiely",
-  "theme_color": "#1976d2",
+  "theme_color": "#1b7993",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
