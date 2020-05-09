@@ -13,7 +13,7 @@ export class TicketGenerator{
 
   public generate(number: number) : Observable<any> {
     return this.http.get('https://1g3imvir8g.execute-api.ap-south-1.amazonaws.com/default/generateTickets')
-    .pipe(map((d : [])=> d.splice(6-number)))
+    .pipe(map((d : [])=> {d.splice(number-6);  return d}))
   }
 
 }

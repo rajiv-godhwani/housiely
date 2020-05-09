@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming'; 
+@import 'assets/styles/theme';
+
+$housiely-theme: mat-dark-theme(mat-palette($md-steelgray),mat-palette($md-tealaccent));
+$housiely-theme: mat-light-theme(mat-palette($md-tealaccent),mat-palette($md-steelgray));
+
+@include angular-material-theme($housiely-theme);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

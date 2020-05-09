@@ -6,7 +6,7 @@ export class FullHouse implements PatternSearch{
 
     markedCells: Cell[];
 
-    isEnabled: boolean;
+    isEnabled: boolean = true;
 
     init(tickets:Array<Ticket>){
 

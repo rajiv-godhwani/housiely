@@ -5,7 +5,7 @@ import { Ticket } from 'src/app/model/ticket.model';
 export class ThirdLine implements PatternSearch{
     markedCells: Cell[] = Array();
 
-    isEnabled: boolean;
+    isEnabled: boolean = true;
 
     thirdLineCellsMap = new Map()
 

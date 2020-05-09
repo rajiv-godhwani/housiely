@@ -18,13 +18,17 @@ import {MatSliderModule} from '@angular/material/slider';
 import { TicketGenerator } from './services/ticket-generator-service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TicketCountDialog } from './ticket-count-dialog/ticket-count-dialog';
+import {MatChipsModule} from '@angular/material/chips';
+import { PatternBoard } from './components/pattern-board/pattern-board.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TicketComponent,
     NumpadComponent,
-    TicketCountDialog
+    TicketCountDialog,
+    PatternBoard
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,8 @@ import { TicketCountDialog } from './ticket-count-dialog/ticket-count-dialog';
     MatToolbarModule,
     MatDialogModule,
     MatIconModule,
-    MatSliderModule
+    MatSliderModule,
+    MatChipsModule
   ],
   providers: [NumpadService,PatternAnnouncerService ,HttpClient,TicketGenerator],
   bootstrap: [AppComponent],

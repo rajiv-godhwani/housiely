@@ -3,16 +3,11 @@
   <div id="header" style="text-align:center">
     <mat-toolbar color="primary">
       <mat-toolbar-row>
+        <span class="brand">housiely</span>
         <button mat-mini-fab id="announceNumber" *ngIf="announceNumber != ''">{{announceNumber}}</button>
         <span class="toolbar-spacer"></span>
-        <button mat-icon-button color="white" (click)="onTicketAdd()" *ngIf="mode == 'Play'">
+        <button mat-icon-button color="white" (click)="onTicketAdd()" >
           <mat-icon>add</mat-icon>
-        </button>
-        <button mat-icon-button color="white" (click)="onModeButtonClick()" *ngIf="mode != 'Play'">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button color="white" (click)="onModeButtonClick()" *ngIf="mode == 'Play' && tickets.length > 0">
-          <mat-icon>play_arrow</mat-icon>
         </button>
       </mat-toolbar-row>
     </mat-toolbar>
@@ -29,7 +24,7 @@
       <p>{{ptrn.friendlyName()}}</p>
   </div> -->
   <div id="footer">
-    
+    <pattern-board [patterns]="patterns"></pattern-board>
   </div>
 </div>
 <router-outlet></router-outlet>

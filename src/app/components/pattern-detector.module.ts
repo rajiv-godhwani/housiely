@@ -31,7 +31,7 @@ export class PatternDetector{
             }
             // If isDirty run patterns
             if(isDirty){
-                var avlblPatterns = this.patterns.filter(p=> !this.isPatternDetected(ticket,p))
+                var avlblPatterns = this.patterns.filter(p=> p.isEnabled && !this.isPatternDetected(ticket,p))
 
                 for(let pattern of avlblPatterns){
                     console.log('Check pattern '+pattern.friendlyName())
@@ -53,6 +53,7 @@ export class PatternDetector{
         }else{
             this.detectedPatterns.set(ticket,[pattern])
         }
+        pattern.isEnabled = false
     }
 
     isDetected(ticket:Ticket,patternName: string){

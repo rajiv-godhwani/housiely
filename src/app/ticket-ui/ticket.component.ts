@@ -11,19 +11,12 @@ import { NumpadService } from '../services/numpad-service';
 
 export class TicketComponent {
   @Input() cells = Array(27)
-  inputMode = true
 
-  selectedCell:number = -1
   markedCell:Array<number> = []
-  private subscription
 
-  constructor(private numberService:NumpadService){
-      this.subscription = this.numberService.getNumber().subscribe(num=> this.onNumberChange(num))
+  constructor(private numpadSvc: NumpadService){
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
 
   getClass(cell,index){
     var classes = []
@@ -32,9 +25,7 @@ export class TicketComponent {
     }else{
         classes.push('filled')
     }
-    if(index == this.selectedCell){
-        classes.push('selected')
-    }
+
     if(this.markedCell.indexOf(Number(cell)) > -1){
         classes.push('marked')
     }
@@ -42,58 +33,22 @@ export class TicketComponent {
   }
 
   onCellSelect(cellIndex:number){
-      if(!this.inputMode){
-          if(this.cells[cellIndex]!=0){
-              if(this.markedCell.indexOf(this.cells[cellIndex]) > -1){
-                this.markedCell.splice(this.markedCell.indexOf(this.cells[cellIndex]),1)
-              }else{
-                this.markedCell.push(this.cells[cellIndex])
-              }
-          }
-      }
-      else{
-        this.selectedCell = cellIndex
-        if(this.cells[this.selectedCell] == undefined){
-            this.cells[this.selectedCell] = ''
+    if(this.cells[cellIndex]!=0){
+        if(this.markedCell.indexOf(this.cells[cellIndex]) > -1){
+          this.markedCell.splice(this.markedCell.indexOf(this.cells[cellIndex]),1)
+        }else{
+          this.markedCell.push(this.cells[cellIndex])
+          this.numpadSvc.emitNumber(this.cells[cellIndex])
         }
-      }
+    }
   }
 
   isEmpty(value):boolean{
       return value == 0 || value == undefined || value == '';
   }
 
-  onNumberChange(number){
-      if(this.selectedCell > -1){
-        
-        if(number == -1){
-            this.cells[this.selectedCell] = ''
-            this.selectedCell = -1    
-        }
-        else if(number == -2){
-            this.selectedCell = -1
-        }else{
-            this.cells[this.selectedCell] += number.toString()
-            if(this.cells[this.selectedCell].length >2){
-                this.cells[this.selectedCell] = number.toString()
-            }
-
-            if(this.cells[this.selectedCell].length == 2){
-                this.selectedCell = -1;
-            }
-        }
-      }
-  }
-
   onNumberAnnounce(num: number){
       this.markedCell.push(num)
   }
 
-  onInputModeChange(mode){
-    this.inputMode = mode
-    if(!this.inputMode){
-        // Clear selection
-        this.selectedCell = -1
-    }
-  }
 }
