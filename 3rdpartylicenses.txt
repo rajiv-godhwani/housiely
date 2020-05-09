@@ -62,6 +62,8 @@ THE SOFTWARE.
 
 @angular/material/button
 
+@angular/material/chips
+
 @angular/material/dialog
 
 @angular/material/icon
