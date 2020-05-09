@@ -38,7 +38,7 @@ import { TicketCountDialog } from './ticket-count-dialog/ticket-count-dialog';
     MatIconModule,
     MatSliderModule
   ],
-  providers: [NumpadService,PatternAnnouncerService,TicketGenerator ,HttpClient],
+  providers: [NumpadService,PatternAnnouncerService ,HttpClient,TicketGenerator],
   bootstrap: [AppComponent],
   entryComponents : [TicketCountDialog]
 })

@@ -48,7 +48,7 @@ export class AppComponent {
   speech = new Speech()
 
   constructor(private numpadSvc: NumpadService,private patternAncr : PatternAnnouncerService,
-    private ticketGen : TicketGenerator, private dialog : MatDialog ){
+     private dialog : MatDialog,private ticketGenSvc : TicketGenerator ){
     if(this.speech.hasBrowserSupport()){
       this.speech.init()
     }
@@ -78,7 +78,7 @@ if(this.mode == 'Edit'){
       data : {count : 1 }
     }).afterClosed().subscribe( count=>
       {
-        this.ticketGen.generate(count).subscribe(tickets=> this.tickets = tickets);
+        this.ticketGenSvc.generate(count).subscribe(tickets=> this.tickets = tickets);
       }
     )
 
