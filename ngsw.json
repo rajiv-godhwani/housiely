@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1589104205677,
+  "timestamp": 1589111507910,
   "index": "https://rajiv-godhwani.github.io/tambola-pattern-detector/index.html",
   "assetGroups": [
     {
@@ -10,8 +10,8 @@
       "urls": [
         "https://rajiv-godhwani.github.io/tambola-pattern-detector/favicon.ico",
         "https://rajiv-godhwani.github.io/tambola-pattern-detector/index.html",
-        "https://rajiv-godhwani.github.io/tambola-pattern-detector/main-es2015.9cfc029e41034f6df63e.js",
-        "https://rajiv-godhwani.github.io/tambola-pattern-detector/main-es5.dc3c98c7f93677b8f331.js",
+        "https://rajiv-godhwani.github.io/tambola-pattern-detector/main-es2015.78485c0a9595d390f195.js",
+        "https://rajiv-godhwani.github.io/tambola-pattern-detector/main-es5.a0869e99635e07531cfc.js",
         "https://rajiv-godhwani.github.io/tambola-pattern-detector/polyfills-es2015.27661dfa98f6332c27dc.js",
         "https://rajiv-godhwani.github.io/tambola-pattern-detector/polyfills-es5.7f43b971448d2fb49202.js",
         "https://rajiv-godhwani.github.io/tambola-pattern-detector/runtime-es2015.858f8dd898b75fe86926.js",
@@ -55,9 +55,9 @@
     "https://rajiv-godhwani.github.io/tambola-pattern-detector/assets/icons/marker.png": "1b580a05acc8e2f90e9968af22f37fa64958ac38",
     "https://rajiv-godhwani.github.io/tambola-pattern-detector/assets/styles/_theme.scss": "99718ef3c482a4b92f3e2083e170d8a158d36c69",
     "https://rajiv-godhwani.github.io/tambola-pattern-detector/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "https://rajiv-godhwani.github.io/tambola-pattern-detector/index.html": "05a8204a1ebe565202180ced9c43ee6ef2c101f4",
-    "https://rajiv-godhwani.github.io/tambola-pattern-detector/main-es2015.9cfc029e41034f6df63e.js": "361c32a46fab4ab18a9a13e7cf77491b61f41a33",
-    "https://rajiv-godhwani.github.io/tambola-pattern-detector/main-es5.dc3c98c7f93677b8f331.js": "67b79100194182d6bee4b2f03871550a39c71b25",
+    "https://rajiv-godhwani.github.io/tambola-pattern-detector/index.html": "0e87e97cea0d6539c372c742e5e9637de70348bb",
+    "https://rajiv-godhwani.github.io/tambola-pattern-detector/main-es2015.78485c0a9595d390f195.js": "8d6dddf04c2e0020cf4daa6175162988c00ab4a9",
+    "https://rajiv-godhwani.github.io/tambola-pattern-detector/main-es5.a0869e99635e07531cfc.js": "147392744b47d8599fcd6db110f93720c1a05a40",
     "https://rajiv-godhwani.github.io/tambola-pattern-detector/marker.6378e05b77ec9ed07a11.png": "1b580a05acc8e2f90e9968af22f37fa64958ac38",
     "https://rajiv-godhwani.github.io/tambola-pattern-detector/polyfills-es2015.27661dfa98f6332c27dc.js": "77f974dd2b186031cfc4f4526d96db4efcd39353",
     "https://rajiv-godhwani.github.io/tambola-pattern-detector/polyfills-es5.7f43b971448d2fb49202.js": "f84a71ef6c7a788b5fe701bf2405313d7766a66d",
