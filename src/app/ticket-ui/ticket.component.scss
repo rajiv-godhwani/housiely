@@ -1,3 +1,7 @@
+@import '~@angular/material/theming';
+@import '../../assets/styles/theme';
+
+
 body{
     font-size: medium;
     font-weight: bold;
@@ -12,17 +16,19 @@ td{
     text-align: center;
     font-size: small;
     font-weight: bold;
+    color: mat-color($primary);
 }
 
 td.marked{
-    background-color: #ffd740;
+    background-color: mat-color($accent);
+    color: $light-primary-text;
     background-size: 3em;
-    background-image: url('../../assets/icons/marker.png');
+  //  background-image: url('../../assets/icons/marker.png');
     background-repeat: no-repeat;
 }
 
 table,td{
-    border: 1px solid #dedddd;
+    border: 1px solid mat-color($primary);
     border-collapse: collapse;
 }
 

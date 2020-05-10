@@ -1,5 +1,5 @@
 <div  class="ticketsWrapper">
-    <table class="ticket">
+    <table class="ticket mat-app-background">
         <tr>
             <td (click)="onCellSelect(i)" [ngClass]="getClass(cell,i)" *ngFor="let cell of cells|slice:0:9; let i = index">{{cell== 0?'':cell}}</td>
         </tr>

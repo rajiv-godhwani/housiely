@@ -1,11 +1,12 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Inject, Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Inject, Component, OnInit, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import Speech from 'speak-tts'
 
 @Component({
     selector: 'prize',
     templateUrl: 'prize-dialog.component.html',
-    styleUrls: ['prize-dialog.component.scss']
+    styleUrls: ['prize-dialog.component.scss'],
+    encapsulation: ViewEncapsulation.None
 
 })
 export class PrizeDialog implements AfterViewInit {

@@ -1,5 +1,5 @@
 <mat-chip-list multiple>
-    <mat-chip color="primary" (click)="pattern.isEnabled= !pattern.isEnabled" 
+    <mat-chip color="accent" (click)="pattern.isEnabled= !pattern.isEnabled" 
         [selected]="pattern.isEnabled" *ngFor="let pattern of patterns;let i = index">{{pattern.friendlyName()}}
     </mat-chip>
 </mat-chip-list>
