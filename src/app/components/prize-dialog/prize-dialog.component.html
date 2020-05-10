@@ -1,13 +1,13 @@
 <div mat-dialog-content>
     <div class="prizeWrapper">
-        <img id="prizeIcon" src="../../../assets/icons/business.svg" />
+        <img id="prizeIcon" src="assets/icons/business.svg" />
     </div>
     <h4>You've won <span *ngFor="let prize of data.patterns;let i=index">{{prize.friendlyName()}}{{i == data.patterns.length-1 ? '' : ', '}}</span> !!</h4>
-    <table>
-        <tr *ngFor="let prize of data.patterns">
-            <td *ngFor="let cell of prize.markedCells" >{{cell.value}}</td>
-        </tr>
-    </table>
+    <div class = "prizeCellsWrapper">
+        <div class="cellWrapper" *ngFor="let prize of data.patterns">
+            <span class="cells" *ngFor="let cell of prize.reason(data.ticket)" >{{cell.value}}</span>
+        </div>
+    </div>
 </div>
 <div mat-dialog-actions align="end">
     <button mat-button (click)="onCloseClick()">Close</button>

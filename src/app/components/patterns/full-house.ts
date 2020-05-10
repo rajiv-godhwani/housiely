@@ -1,31 +1,12 @@
 import { PatternSearch } from '../pattern-contract';
 import { Ticket } from 'src/app/model/ticket.model';
 import { Cell } from 'src/app/model/cell.model';
+import { BasePattern } from './base-pattern';
 
-export class FullHouse implements PatternSearch{
+export class FullHouse extends BasePattern{
 
-    markedCells: Cell[];
-
-    isEnabled: boolean = true;
-
-    init(tickets:Array<Ticket>){
-
-    }
-
-    onUpdate(ticket:Ticket,lastNumber: number):boolean{
-        var markCount = 0
-        ticket.cells.forEach(c=> {
-            if(c.isMarked){
-                markCount++
-            }
-        })
-
-        this.markedCells = ticket.cells.filter(c=> c.isMarked)
-        return markCount == 15;
-    }
-    
-    reason():Array<Cell>{
-        return this.markedCells
+    patternCells(ticket: Ticket): Cell[] {
+       return ticket.cells.filter(c=> c.value != 0)
     }
 
     friendlyName():string{

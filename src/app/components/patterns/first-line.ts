@@ -1,39 +1,17 @@
 import { PatternSearch } from '../pattern-contract';
 import { Cell } from '../../model/cell.model';
 import { Ticket } from 'src/app/model/ticket.model';
+import { BasePattern } from './base-pattern';
 
-export class FirstLine implements PatternSearch{
-    markedCells: Cell[] = Array();
+export class FirstLine extends BasePattern {
 
-    isEnabled: boolean = true;
-
-    firstLineCellsMap = new Map()
-
-    init(tickets: Ticket[]) {
-        tickets.forEach(ticket=>{
-            let firstLineCells = ticket.cells.slice(0,9).filter(c=> !c.isEmpty)
-            this.firstLineCellsMap.set(ticket,firstLineCells)
-
-            console.log("Pattern => ",firstLineCells.map(c=> c.value).join(','))
-        })
-    }
-    
-    onUpdate(ticket: Ticket, lastNumber: number): boolean {
-        let firstLineCells: Array<Cell> = this.firstLineCellsMap.get(ticket)
-        let index = firstLineCells.map(c=> c.value).indexOf(lastNumber)
-        if(index > -1){
-            var cell = firstLineCells.splice(index,1)
-            this.markedCells.push(cell[0])
-        }
-        return firstLineCells.length == 0;
+    patternCells(ticket: Ticket): Cell[] {
+        return ticket.cells.slice(0, 9).filter(c => !c.isEmpty)
     }
 
-    reason(): Cell[] {
-        return this.markedCells
-    }
 
-    friendlyName():string{
-      return "1st Line"   
+    friendlyName(): string {
+        return "1st Line"
     }
 
 }

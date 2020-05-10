@@ -18,9 +18,24 @@
 //     border-collapse: collapse;
 // }
 
-td{
+.prizeCellsWrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: scroll;
+}
+
+.cellWrapper{
+    display: flex;
+    margin: 4px;
+    width: 100%;
+    justify-content: center;
+}
+
+.cells{
+    display : inline-block;
     width: 1.5em;
-    height: 1.5em;
+    line-height: 1.5em;
     background-color: #ffd740;
     border-radius: 1.5em;
     font-size: small;

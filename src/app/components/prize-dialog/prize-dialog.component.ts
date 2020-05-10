@@ -20,6 +20,7 @@ export class PrizeDialog implements AfterViewInit {
     constructor(
         public dialogRef: MatDialogRef<PrizeDialog>,
         @Inject(MAT_DIALOG_DATA) public data) {
+        dialogRef.disableClose = true;
         if (this.speech.hasBrowserSupport()) {
             this.speech.init()
         }
@@ -27,8 +28,8 @@ export class PrizeDialog implements AfterViewInit {
 
     ngAfterViewInit() {
         this.shoot()
-        let a =[]
-        let speechText = "You've won, "+this.data.patterns.map(p=> p.friendlyName()).join(', ')
+        let a = []
+        let speechText = "You've won, " + this.data.patterns.map(p => p.friendlyName()).join(', ')
         console.log(speechText)
         this.speech.speak({ text: speechText })
     }

@@ -1,4 +1,4 @@
-import { Component, ViewChild, QueryList, ViewChildren, ComponentFactoryResolver, ReflectiveInjector, ViewContainerRef } from '@angular/core';
+import { Component, ViewChild, QueryList, ViewChildren, ComponentFactoryResolver, ReflectiveInjector, ViewContainerRef, HostListener } from '@angular/core';
 import { NumpadService } from './services/numpad-service';
 import { TicketComponent } from './ticket-ui/ticket.component';
 import { PatternDetector } from './components/pattern-detector.component';
@@ -19,26 +19,25 @@ import { TicketGenerator } from './services/ticket-generator-service';
 import { MatDialog } from '@angular/material/dialog';
 import { TicketCountDialog } from './ticket-count-dialog/ticket-count-dialog';
 import { PrizeDialog } from './components/prize-dialog/prize-dialog.component';
+import { CanDeactivate } from '@angular/router';
+import { Twins } from './components/patterns/twins';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent{
 
   tickets: Array<number[]> = []
 
   @ViewChildren(TicketComponent) ticketComp: QueryList<TicketComponent>
 
   patternDetector: PatternDetector
-  patterns: Array<PatternSearch> = [new QuickSeven(), new Star(), new Bamboo(),
+  patterns: Array<PatternSearch> = [new QuickSeven(), new Star(),new Twins(), new Bamboo(),
   new BadeMiyan(), new ChoteMiyan(),
   new FirstLine(), new SecondLine(), new ThirdLine(),
   new FullHouse()]
-
-
-  announceNumber = ''
 
   patternSubscription
   numberSubscription
@@ -46,6 +45,11 @@ export class AppComponent {
 
   constructor(private numpadSvc: NumpadService, private patternAncr: PatternAnnouncerService,
     private dialog: MatDialog, private ticketGenSvc: TicketGenerator) {}
+
+  @HostListener('window:beforeunload',['$event'])
+  onExit($event) {
+    return $event.returnValue = window.confirm('Exit?');
+  }
 
   ngAfterViewInit() {
     this.ticketComp.changes.subscribe(() => setTimeout(() => this.onPlay()))
@@ -73,6 +77,10 @@ export class AppComponent {
   onPlay() {
     if (this.patternSubscription) {
       this.patternSubscription.unsubscribe()
+    }
+
+    if(this.numberSubscription){
+      this.numberSubscription.unsubscribe()
     }
 
     this.patterns.forEach(p => p.isEnabled = true)

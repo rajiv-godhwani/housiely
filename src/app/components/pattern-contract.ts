@@ -3,7 +3,7 @@ import { Ticket } from '../model/ticket.model';
 
 export interface PatternSearch{
     
-    markedCells : Array<Cell>
+    markedCells : Map<Ticket,Array<Cell>>
 
     isEnabled : boolean;
 
@@ -11,7 +11,7 @@ export interface PatternSearch{
 
     onUpdate(ticket:Ticket,lastNumber: number):boolean;
     
-    reason():Array<Cell>;
+    reason(ticket:Ticket):Array<Cell>;
 
     friendlyName():string;
 

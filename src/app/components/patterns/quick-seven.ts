@@ -1,33 +1,22 @@
 import { PatternSearch } from '../pattern-contract';
 import { Cell } from '../../model/cell.model';
 import { Ticket } from 'src/app/model/ticket.model';
+import { BasePattern } from './base-pattern';
 
-export class QuickSeven implements PatternSearch{
+export class QuickSeven extends BasePattern {
 
-    markedCells = Array()
-
-    isEnabled = true
-
-    init(tickets: Array<Ticket>){
+    patternCells(ticket: Ticket): Cell[] {
+        return []
     }
 
-    onUpdate(ticket:Ticket, lastNumber: number):boolean{
-        this.markedCells = []
-        ticket.cells.forEach(cell => {
-            if(cell.isMarked){
-             this.markedCells.push(cell)
-            }
-        });
-
-        return this.markedCells.length >= 7;
+    onUpdate(ticket: Ticket, lastNumber: number): boolean {
+        this.pushMarkedCells(ticket,ticket.cells.find(c=> c.value == lastNumber))
+        return this.markedCells.get(ticket).length >= 7;
     }
 
-    reason():Array<Cell>{
-        return this.markedCells
-    }
 
-    friendlyName():string{
-        return "Quick 7"   
+    friendlyName(): string {
+        return "Quick 7"
     }
 
 }
