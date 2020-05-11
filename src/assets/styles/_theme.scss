@@ -10,7 +10,7 @@ $md-steelgray: (
     200 : #b0b0b0,
     300 : #909090,
     400 : #787878,
-    500 : #ff3a36,
+    500 : #FFC107,
     600 : #585858,
     700 : #4e4e4e,
     800 : #444444,
@@ -25,7 +25,7 @@ $md-steelgray: (
         200 : #000000,
         300 : #000000,
         400 : #ffffff,
-        500 : #ffffff,
+        500 : #000000,
         600 : #ffffff,
         700 : #ffffff,
         800 : #ffffff,
@@ -73,7 +73,7 @@ $md-tealaccent: (
 );
 
 $primary: mat-palette($md-tealaccent);
-$accent: mat-palette($md-steelgray);
+$accent: mat-palette($md-steelgray,);
 $warn: mat-palette($mat-red);
 $theme: mat-light-theme($primary, $accent, $warn);
 
