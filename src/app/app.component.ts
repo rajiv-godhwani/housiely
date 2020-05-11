@@ -27,14 +27,14 @@ import { Twins } from './components/patterns/twins';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent{
+export class AppComponent {
 
   tickets: Array<number[]> = []
 
   @ViewChildren(TicketComponent) ticketComp: QueryList<TicketComponent>
 
   patternDetector: PatternDetector
-  patterns: Array<PatternSearch> = [new QuickSeven(), new Star(),new Twins(), new Bamboo(),
+  patterns: Array<PatternSearch> = [new QuickSeven(), new Star(), new Twins(), new Bamboo(),
   new BadeMiyan(), new ChoteMiyan(),
   new FirstLine(), new SecondLine(), new ThirdLine(),
   new FullHouse()]
@@ -44,9 +44,9 @@ export class AppComponent{
 
 
   constructor(private numpadSvc: NumpadService, private patternAncr: PatternAnnouncerService,
-    private dialog: MatDialog, private ticketGenSvc: TicketGenerator) {}
+    private dialog: MatDialog, private ticketGenSvc: TicketGenerator) { }
 
-  @HostListener('window:beforeunload',['$event'])
+  @HostListener('window:beforeunload', ['$event'])
   onExit($event) {
     return $event.returnValue = window.confirm('Exit?');
   }
@@ -79,7 +79,7 @@ export class AppComponent{
       this.patternSubscription.unsubscribe()
     }
 
-    if(this.numberSubscription){
+    if (this.numberSubscription) {
       this.numberSubscription.unsubscribe()
     }
 
@@ -90,13 +90,13 @@ export class AppComponent{
 
     this.patternDetector = new PatternDetector(this.patterns, allTickets, this.patternAncr)
     this.patternSubscription = this.patternAncr.announcer().subscribe(p => {
-      this.dialog.open(PrizeDialog,{data :p})
+      this.dialog.open(PrizeDialog, { panelClass: 'prize-dialog', data: p, maxHeight: '82vw', minWidth: '300px', maxWidth: '300px' })
     })
 
     this.numberSubscription = this.numpadSvc.getNumber().subscribe(num => this.patternDetector.onNumberAnnounce(num))
   }
 
 
-  
+
 
 }

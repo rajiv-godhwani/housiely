@@ -5,9 +5,7 @@ import Speech from 'speak-tts'
 @Component({
     selector: 'prize',
     templateUrl: 'prize-dialog.component.html',
-    styleUrls: ['prize-dialog.component.scss'],
-    encapsulation: ViewEncapsulation.None
-
+    styleUrls: ['prize-dialog.component.scss']
 })
 export class PrizeDialog implements AfterViewInit {
 

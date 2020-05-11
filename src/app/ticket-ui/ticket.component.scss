@@ -1,16 +1,14 @@
-@import '~@angular/material/theming';
-@import '../../assets/styles/theme';
+@import "~@angular/material/theming";
+@import "../../assets/styles/theme";
 
-
-body{
+body {
     font-size: medium;
     font-weight: bold;
 }
-.empty{
-    
+.empty {
 }
 
-td{
+td {
     width: 3em;
     height: 3em;
     text-align: center;
@@ -19,19 +17,21 @@ td{
     color: mat-color($primary);
 }
 
-td.marked{
+td.marked {
     background-color: mat-color($accent);
     color: mat-color($primary);
-    background-size: 3em;
-   background-image: url('../../assets/icons/marker.png');
+    background-size: 32px;
+    background-image: url("../../assets/icons/marker.png");
     background-repeat: no-repeat;
+    background-position: center;
 }
 
-table,td{
+table,
+td {
     border: 1px solid mat-color($primary);
     border-collapse: collapse;
 }
 
-.ticketsWrapper{
+.ticketsWrapper {
     margin-bottom: 1em;
 }
