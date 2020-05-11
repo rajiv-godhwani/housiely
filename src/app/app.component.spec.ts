@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'tambola-pattern-detector'`, () => {
+  it(`should have as title 'housiely'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('tambola-pattern-detector');
+    expect(app.title).toEqual('housiely');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to tambola-pattern-detector!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to housiely!');
   });
 });
