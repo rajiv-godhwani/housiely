@@ -13,7 +13,7 @@
   </div>
 
   <div id="inner-wrap" class="mat-app-background" >
-    <div id="content">
+    <div id="content" [style.visibility]="tickets.length > 0 ? 'visible': 'hidden'">
       <ticket [cells]="tkt" *ngFor = "let tkt of tickets"></ticket>
     </div>
     <dialog></dialog>
