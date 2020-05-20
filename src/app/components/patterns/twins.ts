@@ -29,7 +29,12 @@ export class Twins extends BasePattern {
             }else if(pair1.size == 2 && pair2.size == 2){
                 return
             }
+            // Break the pair if new row will start
+            if(index == 8 || index == 17){
+                tempPair.clear()
+            }
             index++
+            
         })
 
         if(pair1.size ==2 && pair2.size == 2){
