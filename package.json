@@ -24,6 +24,7 @@
     "@angular/router": "~8.0.1",
     "@angular/service-worker": "~8.0.1",
     "hammerjs": "^2.0.8",
+    "panzoom": "^9.2.4",
     "rxjs": "~6.4.0",
     "speak-tts": "^2.0.8",
     "stream": "0.0.2",

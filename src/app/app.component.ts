@@ -21,6 +21,7 @@ import { TicketCountDialog } from './ticket-count-dialog/ticket-count-dialog';
 import { PrizeDialog } from './components/prize-dialog/prize-dialog.component';
 import { CanDeactivate } from '@angular/router';
 import { Twins } from './components/patterns/twins';
+import panzoom from 'panzoom';
 
 @Component({
   selector: 'app-root',
@@ -53,6 +54,21 @@ export class AppComponent {
 
   ngAfterViewInit() {
     this.ticketComp.changes.subscribe(() => setTimeout(() => this.onPlay()))
+    var pz = panzoom(document.getElementById('content'),{
+      bounds: true,
+      boundsPadding: 0.1,
+      onDoubleClick: function(e) {
+        // panzoom.moveTo(0, 0);
+        // panzoom.zoomAbs(0, 0, 1);
+        console.log(e)
+        return false; 
+      },
+      onTouch: function(e) {
+        // `e` - is current touch event.
+    
+        return false; // tells the library to not preventDefault.
+      }
+    })
   }
 
   onNgDestroy() {
