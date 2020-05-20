@@ -4,7 +4,6 @@ body {
     height:100%; 
     padding:0;
     margin:0;
-    overscroll-behavior: none;
 }
 
 #wrapper
@@ -52,6 +51,7 @@ body {
     border-radius: 0.3em;
     background-color: antiquewhite;
     width: fit-content;
+    margin:auto;
 }
 
 .toolbar-spacer{
