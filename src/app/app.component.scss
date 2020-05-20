@@ -4,7 +4,7 @@ body {
     height:100%; 
     padding:0;
     margin:0;
-    overscroll-behavior: contain;
+    overscroll-behavior: none;
 }
 
 #wrapper
@@ -12,13 +12,11 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    overscroll-behavior: none;
 }
 
 #inner-wrap {
     flex-grow: 2;
     overflow: hidden;
-    overscroll-behavior: none;
 }
 
 #inner-wrap:after {

@@ -20,7 +20,7 @@ td {
 td.marked {
     background-color: mat-color($accent);
     color: mat-color($primary);
-    background-size: 32px;
+    background-size: 2em;
     background-image: url("../../assets/icons/marker.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -36,3 +36,7 @@ td {
     margin-bottom: 1em;
 }
 
+.ticketSeperator{
+    margin: 1em auto;
+    border-bottom: 2px dotted #00000052;
+}
