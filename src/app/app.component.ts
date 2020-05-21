@@ -57,6 +57,8 @@ export class AppComponent {
     var pz = panzoom(document.getElementById('content'),{
       bounds: true,
       boundsPadding: 0.1,
+      smoothScroll: false,
+      zoomDoubleClickSpeed: 1, 
       onTouch: function(e) {
         // `e` - is current touch event.
     
