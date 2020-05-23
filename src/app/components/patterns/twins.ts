@@ -14,7 +14,7 @@ export class Twins extends BasePattern {
         let tempPair = pair1
 
         let index = 0
-        ticket.cells.forEach(c => {
+        for (let c of ticket.cells) {
             if (c.isMarked) {
                 // Insert 1, insert second if consecutive index
                 if (tempPair.has(index - 1) || tempPair.size == 0) {
@@ -27,7 +27,7 @@ export class Twins extends BasePattern {
             if (pair1.size == 2 && pair2.size != 2) {
                 tempPair = pair2
             }else if(pair1.size == 2 && pair2.size == 2){
-                return
+                break;
             }
             // Break the pair if new row will start
             if(index == 8 || index == 17){
@@ -35,7 +35,8 @@ export class Twins extends BasePattern {
             }
             index++
             
-        })
+        }
+
 
         if(pair1.size ==2 && pair2.size == 2){
             var cells = []
